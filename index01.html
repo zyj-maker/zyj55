@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI之路</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .content-section {
+            max-width: 70%;
+            margin: 0 auto 40px;
+        }
+
+        .content-section img {
+            max-width: 80%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            margin-bottom: 20px;
+        }
+
+        .content-section p {
+            text-align: justify;
+        }
+
+        @media screen and (min-width: 768px) {
+            .content-section {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+
+            .content-section img,
+            .content-section .text {
+                flex: 0 0 calc(50% - 20px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar" id="nav">
+        <div class="logo">Ai之路</div>
+        <div class="menu-icon" id="menuIcon">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul id="navbarMenu">
+            <li><a href="index.html">首页</a></li>
+            <li><a href="index01.html">AI发展史</a></li>
+            <li><a href="index02.html">AI工具</a></li>
+            <li><a href="index03.html">个人简介</a></li>
+            <li><a href="index04.html">数据统计</a></li>
+        </ul>
+    </div>
+    <h1>AI发展史</h1>
+
+    <div class="content-section">
+        <div>
+            <img src="images/a10.jpg" alt="" width="300">
+        </div>
+        <div class="text">
+            <h2>★里程碑之一</h2>
+            <p>AI 的发展起步于规则驱动阶段，这一阶段的人工智能系统主要依赖人类编写的明确规则和逻辑推理框架。专家系统是这一时期的代表技术，通过预先设定的规则库和推理引擎，模拟专家在特定领域的决策过程。这种基于符号的人工智能虽然在医疗诊断和工程设计等领域取得了一些成功，但由于缺乏灵活性，难以处理复杂或未定义的问题，逐渐暴露出局限性。尤其是面对海量数据时，规则驱动的方式显得笨拙且效率低下。
+            </p>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <div class="text">
+            <h2>★里程碑之二</h2>
+            <p>随着计算能力的提升和数据量的增加，人工智能进入了统计学习阶段。此时，机器学习算法成为研究热点，特别是监督学习和无监督学习得到了广泛应用。这一阶段强调从数据中提取模式和规律，通过概率和统计方法实现预测和分类任务。支持向量机（SVM）、决策树、随机森林等算法被广泛应用于金融、营销、安防等领域。相比规则驱动阶段，统计学习显著提高了系统的适应能力，但它依然依赖大量人工特征工程，无法自动处理高维和复杂数据。
+            </p>
+        </div>
+        <div>
+            <img src="images/a2.jpg" alt="" width="300">
+        </div>
+    </div>
+
+    <div class="content-section">
+        <div>
+            <img src="images/a6.webp" alt="" width="300">
+        </div>
+        <div class="text">
+            <h2>★里程碑之三</h2>
+            <p>深度学习的兴起标志着人工智能进入新纪元。以深度神经网络为基础的算法能够模拟人脑的多层信息处理机制，从大规模数据中自动学习特征。这使得 AI 在图像识别、语音识别、自然语言处理等领域取得突破性进展，例如卷积神经网络（CNN）推动了计算机视觉的发展，循环神经网络（RNN）改进了语言建模能力。此外，生成对抗网络（GAN）和强化学习的结合也让 AI 实现了从对抗生成到自主学习的跃迁。深度学习不仅极大提高了系统性能，还催生了自动驾驶、智能家居等前沿应用。</p>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <div class="text">
+            <h2>★里程碑之四</h2>
+            <p>未来，人工智能的发展目标是迈向通用人工智能（Artificial General Intelligence, AGI），也就是具备跨领域学习、推理和决策能力的智能系统。与当前专用人工智能（Narrow AI）不同，通用人工智能能够在不同环境下自主适应，解决复杂问题并做出创新性决策。这一阶段可能涉及跨学科的深度融合，如结合量子计算增强计算能力，或通过类脑计算实现更高效的信息处理。然而，实现 AGI 面临巨大的技术和伦理挑战，如何确保其行为符合人类价值观，同时避免对社会产生负面影响，将是关键问题。
+            </p>
+        </div>
+        <div>
+            <img src="images/a7.jpg" alt="" width="300">
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>

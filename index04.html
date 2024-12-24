@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI之路</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- 引入echarts -->
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.2.2/dist/echarts.min.js"></script>
+
+    <style>
+        .container {
+            width: 300px;
+            margin: 0 auto;
+            margin-top: 100px;
+            text-align: center;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            box-sizing: border-box;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #00408B;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        #app {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar" id="nav">
+        <div class="logo">个人Ai之路</div>
+        <div class="menu-icon" id="menuIcon">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul id="navbarMenu">
+            <li><a href="index.html">首页</a></li>
+            <li><a href="index01.html">AI发展史</a></li>
+            <li><a href="index02.html">AI工具</a></li>
+            <li><a href="index03.html">个人简介</a></li>
+            <li><a href="index04.html">数据统计</a></li>
+        </ul>
+    </div>
+
+    <div id="app">
+        <div style="width: 650px; height: 500px;" id="echartsbox"></div>
+        <div style="width: 650px; height: 500px;" id="echartsbox2"></div>
+    </div>
+
+    <script>
+        // 生成一个折线图
+        var chartDom = document.getElementById('echartsbox');
+        var chartDom2 = document.getElementById('echartsbox2');
+        var chartDom3 = document.getElementById('echartsbox3');
+        var chartDom4 = document.getElementById('echartsbox4');
+        var myChart = echarts.init(chartDom);
+        var myChart2 = echarts.init(chartDom2);
+        var option;
+
+        option = {
+            title: {
+                text: '一周AI访问统计'
+            },
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'cross',
+                    label: {
+                        backgroundColor: '#6a7985'
+                    }
+                }
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            xAxis: [
+                {
+                    type: 'category',
+                    boundaryGap: false,
+                    data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+                }
+            ],
+            yAxis: [
+                {
+                    type: 'value'
+                }
+            ],
+            series: [
+                {
+                    name: 'Email',
+                    type: 'line',
+                    stack: 'Total',
+                    areaStyle: {},
+                    emphasis: {
+                        focus: 'series'
+                    },
+                    data: [120, 132, 101, 134, 90, 230, 210]
+                },
+                {
+                    name: 'Union Ads',
+                    type: 'line',
+                    stack: 'Total',
+                    areaStyle: {},
+                    emphasis: {
+                        focus: 'series'
+                    },
+                    data: [220, 182, 191, 234, 290, 330, 310]
+                },
+                {
+                    name: 'Video Ads',
+                    type: 'line',
+                    stack: 'Total',
+                    areaStyle: {},
+                    emphasis: {
+                        focus: 'series'
+                    },
+                    data: [150, 232, 201, 154, 190, 330, 410]
+                },
+                {
+                    name: 'Direct',
+                    type: 'line',
+                    stack: 'Total',
+                    areaStyle: {},
+                    emphasis: {
+                        focus: 'series'
+                    },
+                    data: [320, 332, 301, 334, 390, 330, 320]
+                },
+                {
+                    name: 'Search Engine',
+                    type: 'line',
+                    stack: 'Total',
+                    label: {
+                        show: true,
+                        position: 'top'
+                    },
+                    areaStyle: {},
+                    emphasis: {
+                        focus: 'series'
+                    },
+                    data: [820, 932, 901, 934, 1290, 1330, 1320]
+                }
+            ]
+        }
+        myChart.setOption(option);
+        const names = [
+            'Orange',
+            'Tomato',
+            'Apple',
+            'Sakana',
+            'Banana',
+            'Iwashi',
+            'Snappy Fish',
+            'Lemon',
+            'Pasta'
+        ];
+        const years = ['2011', '2012', '2023', '2024', '2017', '2016'];
+        const shuffle = (array) => {
+            let currentIndex = array.length;
+            let randomIndex = 0;
+            while (currentIndex > 0) {
+                randomIndex = Math.floor(Math.random() * currentIndex);
+                currentIndex--;
+                [array[currentIndex], array[randomIndex]] = [
+                    array[randomIndex],
+                    array[currentIndex]
+                ];
+            }
+            return array;
+        };
+        const generateRankingData = () => {
+            const map = new Map();
+            const defaultRanking = Array.from({ length: names.length }, (_, i) => i + 1);
+            for (const _ of years) {
+                const shuffleArray = shuffle(defaultRanking);
+                names.forEach((name, i) => {
+                    map.set(name, (map.get(name) || []).concat(shuffleArray[i]));
+                });
+            }
+            return map;
+        };
+        const generateSeriesList = () => {
+            const seriesList = [];
+            const rankingMap = generateRankingData();
+            rankingMap.forEach((data, name) => {
+                const series = {
+                    name,
+                    symbolSize: 20,
+                    type: 'line',
+                    smooth: true,
+                    emphasis: {
+                        focus: 'series'
+                    },
+                    endLabel: {
+                        show: true,
+                        formatter: '{a}',
+                        distance: 20
+                    },
+                    lineStyle: {
+                        width: 4
+                    },
+                    data
+                };
+                seriesList.push(series);
+            });
+            return seriesList;
+        };
+        var option2 = {
+            title: {
+                text: 'AI接口统计'
+            },
+            tooltip: {
+                trigger: 'item'
+            },
+            grid: {
+                left: 30,
+                right: 110,
+                bottom: 30,
+                containLabel: true
+            },
+            toolbox: {
+              
+            },
+            xAxis: {
+                type: 'category',
+                splitLine: {
+                    show: true
+                },
+                axisLabel: {
+                    margin: 30,
+                    fontSize: 16
+                },
+                boundaryGap: false,
+                data: years
+            },
+            yAxis: {
+                type: 'value',
+                axisLabel: {
+                    margin: 30,
+                    fontSize: 16,
+                    formatter: '#{value}'
+                },
+                inverse: true,
+                interval: 1,
+                min: 1,
+                max: names.length
+            },
+            series: generateSeriesList()
+        };
+        myChart2.setOption(option2);
+    </script>
+</body>
+
+</html>
